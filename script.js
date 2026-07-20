@@ -282,6 +282,8 @@ saveBtn.onclick = () => {
         area.style.margin = prevMargin;
         area.parentElement.style.height = prevParentHeight;
 
+        fitCaptureArea();
+
         const image = canvas.toDataURL("image/png");
 
         previewImage.src = image;
@@ -332,9 +334,6 @@ document.addEventListener("keydown",(e)=>{
 
 });
 
-// 저장된 데이터가 있으면 다시 그리기
-createTable();
-
 /* ==========================================
    끝
 ========================================== */
@@ -375,3 +374,12 @@ function fitCaptureArea() {
     scaleWrap.style.height = (naturalHeight * scale) + "px";
 
 }
+
+fitCaptureArea();
+
+window.addEventListener("load", fitCaptureArea);
+window.addEventListener("resize", fitCaptureArea);
+
+window.addEventListener("orientationchange", () => {
+    setTimeout(fitCaptureArea, 200);
+});
