@@ -270,8 +270,7 @@ saveBtn.onclick = () => {
         backgroundColor: "#ffffff",
         scale: 3,
         useCORS: true,
-        width: 1400,
-        windowWidth: 1400
+        
     }).then(canvas => {
 
         buttonWrap.style.display = "flex";

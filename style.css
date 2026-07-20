@@ -464,15 +464,13 @@ button:hover{
 }
 
 #previewImage{
-
+    display:block;
     width:100%;
-
-    border-radius:12px;
-
-    border:1px solid #ddd;
-
-    margin-bottom:20px;
-
+    max-width:100%;
+    height:auto;
+    object-fit:contain;
+    margin:20px auto;
+    border-radius:14px;
 }
 
 #closeSaveModal{
@@ -584,4 +582,16 @@ button:hover{
         font-size:26px;
     }
 
+        .save-box{
+        width:82%;
+        max-width:340px;
+        padding:20px;
+        border-radius:18px;
+    }
+
+    .modal-content{
+        width:82%;
+        max-width:340px;
+        padding:22px;
+    }
 }
