@@ -343,23 +343,41 @@ createTable();
    모바일 자동 축소 (높이 보정)
 ========================================== */
 
-function updateCaptureHeight() {
-    const area = document.getElementById("captureArea");
-    if (!area) return;
+/* ==========================================
+   모바일 자동 축소 (wrapper 높이도 같이 조절)
+========================================== */
 
-    // 원본 크기 기준 실제 높이를 재기 위해 transform 잠깐 해제
-    const prevTransform = area.style.transform;
+function fitCaptureArea() {
+
+    const area = document.getElementById("captureArea");
+    const wrapper = document.querySelector(".wrapper");
+
+    if (!area || !wrapper) return;
+
     area.style.transform = "none";
 
-    const height = area.scrollHeight;
+    const naturalWidth = area.offsetWidth;
+    const naturalHeight = area.offsetHeight;
 
-    area.style.transform = prevTransform;
+    const screenWidth = window.innerWidth;
 
-    document.documentElement.style.setProperty(
-        "--capture-height",
-        height + "px"
-    );
+    if (screenWidth >= naturalWidth) {
+
+        area.style.transform = "none";
+        wrapper.style.height = "auto";
+        return;
+
+    }
+
+    const scale = screenWidth / naturalWidth;
+
+    area.style.transform = `scale(${scale})`;
+    wrapper.style.height = (naturalHeight * scale) + "px";
+
 }
 
-window.addEventListener("load", updateCaptureHeight);
-window.addEventListener("resize", updateCaptureHeight);
+window.addEventListener("load", fitCaptureArea);
+window.addEventListener("resize", fitCaptureArea);
+window.addEventListener("orientationchange", () => {
+    setTimeout(fitCaptureArea, 300);
+});
