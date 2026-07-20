@@ -255,39 +255,41 @@ resetBtn.onclick = ()=>{
 const preloadLogo = new Image();
 preloadLogo.src = "assets/logo.png";
 
-saveBtn.onclick = ()=>{
+saveBtn.onclick = () => {
 
-    const buttonWrap =
-    document.querySelector(".button-wrap");
+    const buttonWrap = document.querySelector(".button-wrap");
+    const area = document.getElementById("captureArea");
+
+    const prevTransform = area.style.transform;
+    const prevMargin = area.style.margin;
+    const prevParentHeight = area.parentElement.style.height;
 
     buttonWrap.style.display = "none";
+    area.style.transform = "none";
+    area.style.margin = "0 auto";
+    area.parentElement.style.height = "auto";
 
-    html2canvas(
-        document.getElementById("captureArea"),
-        {
-            backgroundColor:"#ffffff",
-            scale:2,
-            useCORS:true
-        }
-    ).then(canvas=>{
+    html2canvas(area, {
+        backgroundColor: "#ffffff",
+        scale: 2,
+        useCORS: true,
+        width: 1400,
+        windowWidth: 1400
+    }).then(canvas => {
 
         buttonWrap.style.display = "flex";
+        area.style.transform = prevTransform;
+        area.style.margin = prevMargin;
+        area.parentElement.style.height = prevParentHeight;
 
-        const image =
-        canvas.toDataURL("image/png");
+        const image = canvas.toDataURL("image/png");
 
         previewImage.src = image;
-
         saveModal.classList.remove("hidden");
 
-        const link =
-        document.createElement("a");
-
+        const link = document.createElement("a");
         link.href = image;
-
-        link.download =
-        "KickFlip_RPS.png";
-
+        link.download = "KickFlip_RPS.png";
         link.click();
 
     });
@@ -336,3 +338,36 @@ createTable();
 /* ==========================================
    끝
 ========================================== */
+
+function scaleCaptureArea() {
+
+    const area = document.getElementById("captureArea");
+
+    if (!area) return;
+
+    const designWidth = 1400;
+    const screenWidth = window.innerWidth;
+
+    if (screenWidth >= designWidth) {
+
+        area.style.transform = "scale(1)";
+        area.style.margin = "0 auto";
+        area.parentElement.style.height = "auto";
+        return;
+
+    }
+
+    const scale = screenWidth / designWidth;
+
+    area.style.transform = `scale(${scale})`;
+    area.style.margin = "0 auto";
+    area.parentElement.style.height =
+        area.offsetHeight * scale + "px";
+
+}
+
+window.addEventListener("load", scaleCaptureArea);
+window.addEventListener("resize", scaleCaptureArea);
+window.addEventListener("orientationchange", () => {
+    setTimeout(scaleCaptureArea, 200);
+});

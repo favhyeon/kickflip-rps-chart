@@ -491,63 +491,17 @@ button:hover{
    반응형
 =========================== */
 
-@media (max-width:1500px){
-
-    .capture-area{
-
-        width:95%;
-
-        padding:35px;
-
-    }
-
-    .logo{
-
-        width: 500px;
-
-    }
-
-    h1{
-
-        font-size:46px;
-
-    }
-
-    th,
-    td{
-
-        height:68px;
-
-        font-size:22px;
-
-    }
-
-    .capture-id{
-}
-        font-size:17px;
-    }
-
-
-    .legend-item{
-
-        font-size:18px;
-
-    }
-
-    button{
-
-        width:180px;
-
-        height:54px;
-
-        font-size:18px;
-
-    }
-
-}
 
 .logo{
     display:block;
     width: 450px;
     margin:0 auto 20px;
+}
+
+.wrapper{
+    overflow: visible;
+}
+
+.capture-area{
+    transform-origin: top center;
 }
