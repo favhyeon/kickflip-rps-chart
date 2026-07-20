@@ -350,9 +350,9 @@ createTable();
 function fitCaptureArea() {
 
     const area = document.getElementById("captureArea");
-    const wrapper = document.querySelector(".wrapper");
+    const scaleWrap = document.getElementById("scaleWrap");
 
-    if (!area || !wrapper) return;
+    if (!area || !scaleWrap) return;
 
     area.style.transform = "none";
 
@@ -364,7 +364,7 @@ function fitCaptureArea() {
     if (screenWidth >= naturalWidth) {
 
         area.style.transform = "none";
-        wrapper.style.height = "auto";
+        scaleWrap.style.height = "auto";
         return;
 
     }
@@ -372,12 +372,6 @@ function fitCaptureArea() {
     const scale = screenWidth / naturalWidth;
 
     area.style.transform = `scale(${scale})`;
-    wrapper.style.height = (naturalHeight * scale) + "px";
+    scaleWrap.style.height = (naturalHeight * scale) + "px";
 
 }
-
-window.addEventListener("load", fitCaptureArea);
-window.addEventListener("resize", fitCaptureArea);
-window.addEventListener("orientationchange", () => {
-    setTimeout(fitCaptureArea, 300);
-});
