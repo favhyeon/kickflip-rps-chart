@@ -502,6 +502,17 @@ button:hover{
     overflow: visible;
 }
 
-.capture-area{
-    transform-origin: top center;
+@media (max-width: 1400px) {
+
+    .wrapper{
+        width: 100%;
+        overflow-x: auto;
+        padding: 20px 0;
+    }
+
+    .capture-area{
+        width: 1400px;
+        transform: none;
+    }
+
 }
