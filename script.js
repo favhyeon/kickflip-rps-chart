@@ -370,8 +370,14 @@ function scaleCaptureArea() {
 
 }
 
+window.addEventListener("DOMContentLoaded", scaleCaptureArea);
 window.addEventListener("load", scaleCaptureArea);
 window.addEventListener("resize", scaleCaptureArea);
 window.addEventListener("orientationchange", () => {
-    setTimeout(scaleCaptureArea, 200);
+    setTimeout(scaleCaptureArea, 300);
 });
+
+// 모바일 초기 렌더링 타이밍 보정용 (여러 번 재시도)
+setTimeout(scaleCaptureArea, 100);
+setTimeout(scaleCaptureArea, 300);
+setTimeout(scaleCaptureArea, 600);
