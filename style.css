@@ -502,17 +502,25 @@ button:hover{
     overflow: visible;
 }
 
+.wrapper{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 20px 0;
+    overflow: hidden;
+}
+
+.capture-area{
+    width: 1400px;
+    flex-shrink: 0;
+}
+
 @media (max-width: 1400px) {
 
-    .wrapper{
-        width: 100%;
-        overflow-x: auto;
-        padding: 20px 0;
-    }
-
     .capture-area{
-        width: 1400px;
-        transform: none;
+        transform: scale(calc(100vw / 1400));
+        transform-origin: top center;
+        margin-bottom: calc(-1 * (1 - (100vw / 1400)) * var(--capture-height, 2000px));
     }
 
 }

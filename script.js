@@ -338,3 +338,28 @@ createTable();
 /* ==========================================
    끝
 ========================================== */
+
+/* ==========================================
+   모바일 자동 축소 (높이 보정)
+========================================== */
+
+function updateCaptureHeight() {
+    const area = document.getElementById("captureArea");
+    if (!area) return;
+
+    // 원본 크기 기준 실제 높이를 재기 위해 transform 잠깐 해제
+    const prevTransform = area.style.transform;
+    area.style.transform = "none";
+
+    const height = area.scrollHeight;
+
+    area.style.transform = prevTransform;
+
+    document.documentElement.style.setProperty(
+        "--capture-height",
+        height + "px"
+    );
+}
+
+window.addEventListener("load", updateCaptureHeight);
+window.addEventListener("resize", updateCaptureHeight);
