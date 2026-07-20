@@ -265,24 +265,16 @@ saveBtn.onclick = () => {
     const prevParentHeight = area.parentElement.style.height;
 
     buttonWrap.style.display = "none";
-    area.style.transform = "none";
-    area.style.margin = "0 auto";
-    area.parentElement.style.height = "auto";
 
     html2canvas(area, {
         backgroundColor: "#ffffff",
-        scale: 2,
+        scale: 3,
         useCORS: true,
         width: 1400,
         windowWidth: 1400
     }).then(canvas => {
 
         buttonWrap.style.display = "flex";
-        area.style.transform = prevTransform;
-        area.style.margin = prevMargin;
-        area.parentElement.style.height = prevParentHeight;
-
-        fitCaptureArea();
 
         const image = canvas.toDataURL("image/png");
 
@@ -349,30 +341,21 @@ document.addEventListener("keydown",(e)=>{
 function fitCaptureArea() {
 
     const area = document.getElementById("captureArea");
-    const scaleWrap = document.getElementById("scaleWrap");
+    const wrap = document.getElementById("scaleWrap");
 
-    if (!area || !scaleWrap) return;
+    if (!area || !wrap) return;
 
-    area.style.transform = "none";
+    // 원래 크기
+    const ORIGINAL_WIDTH = 1400;
 
-    const naturalWidth = area.offsetWidth;
-    const naturalHeight = area.offsetHeight;
+    const screenWidth = Math.min(window.innerWidth, document.documentElement.clientWidth);
 
-    const screenWidth = window.innerWidth;
+    const scale = Math.min(1, screenWidth / ORIGINAL_WIDTH);
 
-    if (screenWidth >= naturalWidth) {
-
-        area.style.transform = "none";
-        scaleWrap.style.height = "auto";
-        return;
-
-    }
-
-    const scale = screenWidth / naturalWidth;
-
+    area.style.transformOrigin = "top left";
     area.style.transform = `scale(${scale})`;
-    scaleWrap.style.height = (naturalHeight * scale) + "px";
 
+    wrap.style.height = `${area.scrollHeight * scale}px`;
 }
 
 fitCaptureArea();
