@@ -1,0 +1,553 @@
+/* ===========================
+   기본 설정
+=========================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background:#f5f5f5;
+    font-family:
+    "Pretendard",
+    "Noto Sans KR",
+    sans-serif;
+
+    color:#222;
+}
+
+.wrapper{
+    width:100%;
+    padding:40px 0;
+}
+
+.capture-area{
+
+    width:1400px;
+
+    margin:0 auto;
+
+    background:#fff;
+
+    padding:
+    40px
+    50px
+    35px;
+
+    border-radius:24px;
+
+    box-shadow:
+    0 10px 40px
+    rgba(0,0,0,.08);
+
+}
+
+.logo{
+
+    width: 500px;
+
+    display:block;
+
+    margin:
+    0 auto
+    2px;
+
+}
+
+h1{
+
+    text-align:center;
+
+    font-size:42px;
+
+    font-weight:900;
+
+    margin-bottom: 20px;
+
+}
+
+.table-wrap{
+    position:relative;
+
+    margin-top:0;
+}
+
+.capture-id{
+    display:block;
+    text-align:right;
+
+    margin-top:-5px;
+    margin-bottom:10px;
+
+    padding-right:5px;
+
+    color:#8c8c8c;
+    font-size:16px;
+    font-weight:700;
+}
+
+table{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+    table-layout:fixed;
+
+    overflow:hidden;
+
+    border-radius:16px;
+
+}
+
+th{
+
+    background:#111;
+
+    color:#fff;
+
+    height:82px;
+
+    font-size:28px;
+
+    font-weight:800;
+
+    border:
+    1px solid
+    #222;
+
+}
+
+th:first-child{
+
+    width:170px;
+
+}
+
+td{
+
+    height:82px;
+
+    text-align:center;
+
+    font-size:28px;
+
+    font-weight:700;
+
+    background:#fff;
+
+    border:
+    1px solid
+    #e6e6e6;
+
+    cursor:pointer;
+
+    transition:.15s;
+
+}
+
+td:hover{
+
+    transform:scale(1.03);
+
+}
+
+/* ===========================
+   표 스타일
+=========================== */
+
+tr:last-child td{
+    border-bottom:1px solid #e6e6e6;
+}
+
+td:last-child,
+th:last-child{
+    border-right:1px solid #e6e6e6;
+}
+
+.legend{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    flex-wrap:wrap;
+
+    gap:24px;
+
+    margin-top:26px;
+
+}
+
+.legend-item{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    font-size:23px;
+
+    font-weight:700;
+
+}
+
+.color{
+
+    width:28px;
+
+    height:28px;
+
+    border-radius:50%;
+
+    border:2px solid #d8d8d8;
+
+}
+
+.otp{
+    background:#ff4d88;
+}
+
+.love{
+    background:#ff9ec8;
+}
+
+.like{
+    background:#ffd54f;
+}
+
+.okay{
+    background:#8bd66d;
+}
+
+.none{
+    background:#ffffff;
+}
+
+.bad{
+    background:#87d8ff;
+}
+
+.hate{
+    background:#8a8a8a;
+}
+
+/* ===========================
+   버튼
+=========================== */
+
+.button-wrap{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:18px;
+
+    margin-top:26px;
+
+}
+
+button{
+
+    width:210px;
+
+    height:60px;
+
+    border:none;
+
+    border-radius:14px;
+
+    font-size:22px;
+
+    font-weight:800;
+
+    cursor:pointer;
+
+    transition:.2s;
+
+}
+
+button:hover{
+
+    transform:translateY(-2px);
+
+}
+
+#saveBtn{
+
+    background:#111;
+
+    color:#fff;
+
+}
+
+#resetBtn{
+
+    background:#111;
+
+    color:#fff;
+
+}
+
+/* ===========================
+   색상 선택 모달
+=========================== */
+
+.modal{
+
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(0,0,0,.45);
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    z-index:999;
+
+}
+
+.hidden{
+
+    display:none;
+
+}
+
+.modal-box{
+
+    width:430px;
+
+    background:#fff;
+
+    border-radius:20px;
+
+    padding:28px;
+
+    position:relative;
+
+}
+
+.close-btn{
+
+    position:absolute;
+
+    top:14px;
+
+    right:14px;
+
+    width:40px;
+
+    height:40px;
+
+    background:none;
+
+    border:none;
+
+    font-size:34px;
+
+    cursor:pointer;
+
+    color:#555;
+
+}
+
+#shipTitle{
+
+    text-align:center;
+
+    font-size:34px;
+
+    font-weight:900;
+
+    margin-bottom:22px;
+
+}
+
+.option{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:14px;
+
+    padding:12px 4px;
+
+    cursor:pointer;
+
+    border-radius:10px;
+
+    transition:.15s;
+
+}
+
+.option:hover{
+
+    background:#f4f4f4;
+
+}
+
+.option .dot{
+
+    width:26px;
+
+    height:26px;
+
+    border-radius:50%;
+
+    border:2px solid #d8d8d8;
+
+}
+
+.option span:last-child{
+
+    font-size:23px;
+
+    font-weight:700;
+
+}
+
+.clear-btn{
+
+    width:100%;
+
+    margin-top:22px;
+
+    background:#efefef;
+
+    color:#222;
+
+}
+
+/* ===========================
+   저장 완료 모달
+=========================== */
+
+.save-box{
+
+    width:620px;
+
+    background:#fff;
+
+    border-radius:20px;
+
+    padding:30px;
+
+    text-align:center;
+
+}
+
+.save-box h2{
+
+    font-size:34px;
+
+    margin-bottom:14px;
+
+}
+
+.save-box p{
+
+    font-size:20px;
+
+    color:#777;
+
+    margin-bottom:20px;
+
+}
+
+#previewImage{
+
+    width:100%;
+
+    border-radius:12px;
+
+    border:1px solid #ddd;
+
+    margin-bottom:20px;
+
+}
+
+#closeSaveModal{
+
+    width:180px;
+
+    background:#111;
+
+    color:#fff;
+
+}
+
+/* ===========================
+   반응형
+=========================== */
+
+@media (max-width:1500px){
+
+    .capture-area{
+
+        width:95%;
+
+        padding:35px;
+
+    }
+
+    .logo{
+
+        width: 500px;
+
+    }
+
+    h1{
+
+        font-size:46px;
+
+    }
+
+    th,
+    td{
+
+        height:68px;
+
+        font-size:22px;
+
+    }
+
+    .capture-id{
+}
+        font-size:17px;
+    }
+
+
+    .legend-item{
+
+        font-size:18px;
+
+    }
+
+    button{
+
+        width:180px;
+
+        height:54px;
+
+        font-size:18px;
+
+    }
+
+}
+
+.logo{
+    display:block;
+    width: 450px;
+    margin:0 auto 20px;
+}
