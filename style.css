@@ -579,19 +579,32 @@ button:hover{
     }
 
     .save-box h2{
-        font-size:26px;
+        font-size:28px;
     }
 
-        .save-box{
-        width:82%;
+    .save-box p{
+        font-size:14px;
+        line-height:1.4;
+    }
+
+    .save-box{
+        width:75%;
         max-width:340px;
         padding:20px;
         border-radius:18px;
     }
 
     .modal-content{
-        width:82%;
+        width:75%;
         max-width:340px;
         padding:22px;
     }
+
+    .modal-box{
+    width:75%;
+    max-width:340px;
+    padding:20px;
+    border-radius:18px;
+    }
+
 }
