@@ -346,6 +346,8 @@ function scaleCaptureArea() {
     if (!area) return;
 
     const designWidth = 1400;
+    const designHeight = area.scrollHeight;
+
     const screenWidth = window.innerWidth;
 
     if (screenWidth >= designWidth) {
@@ -360,9 +362,11 @@ function scaleCaptureArea() {
     const scale = screenWidth / designWidth;
 
     area.style.transform = `scale(${scale})`;
+    area.style.transformOrigin = "top center";
     area.style.margin = "0 auto";
     area.parentElement.style.height =
-        area.offsetHeight * scale + "px";
+        (designHeight * scale) + "px";
+    area.parentElement.style.overflow = "hidden";
 
 }
 
